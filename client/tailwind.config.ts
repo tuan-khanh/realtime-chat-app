@@ -13,6 +13,18 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        sidebar: {
+          active: "#6b32ec",
+          bgActive: "#f5f5ff",
+          iconActive: "#636c80",
+        },
+      },
+      borderColor: {
+        sidebar: {
+          active: "#6b32ec",
+        },
+      },
     },
   },
   plugins: [],

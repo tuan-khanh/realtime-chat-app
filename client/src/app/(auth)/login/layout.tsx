@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,13 +12,13 @@ function LoginLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Container
-      sx={{ minHeight: "100vh" }}
+    <Box
+      sx={{ bgcolor: "#E3E7FF" }}
       component={"section"}
-      className="flex items-center justify-center"
+      className="h-screen flex items-center justify-center "
     >
       {children}
-    </Container>
+    </Box>
   );
 }
 

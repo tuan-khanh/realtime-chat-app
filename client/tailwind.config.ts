@@ -19,11 +19,7 @@ const config: Config = {
           bgActive: "#f5f5ff",
           iconActive: "#636c80",
         },
-      },
-      borderColor: {
-        sidebar: {
-          active: "#6b32ec",
-        },
+        primary: "#6b32ec",
       },
     },
   },

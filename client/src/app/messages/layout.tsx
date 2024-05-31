@@ -17,19 +17,21 @@ import SimpleConversationItem from "@/components/conversation/simple-conservatio
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import { useRouter } from "next/navigation";
 
 function MessagesLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const [conservations, setConservations] = useImmer(
     [] as ISimpleConversation[]
   );
   const [selectedConservationId, setSelectedConservationId] = useState(-1);
+  const router = useRouter();
   React.useEffect(() => {
     setConservations(_conservations);
   }, [setConservations]);
   return (
     <Box className="h-screen flex">
       <Stack
-        className="w-96 bg-white h-screen px-4 overflow-hidden"
+        className="w-96 bg-white h-screen px-4 overflow-hidden border-r-2 border-solid"
         spacing={2}
       >
         <Box className="pt-8 flex items-end justify-between">
@@ -61,7 +63,10 @@ function MessagesLayout({ children }: Readonly<{ children: React.ReactNode }>) {
               <Button
                 variant="text"
                 key={`${item.id}${index}`}
-                onClick={() => setSelectedConservationId(item.id)}
+                onClick={() => {
+                  setSelectedConservationId(item.id);
+                  router.push(`/${item.id}`);
+                }}
                 className={
                   "w-full justify-start hover:bg-slate-300" +
                   (selectedConservationId === item.id ? " bg-slate-300" : "")

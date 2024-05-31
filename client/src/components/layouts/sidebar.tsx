@@ -20,7 +20,7 @@ const items: INavItem[] = [
 
 function Sidebar() {
   return (
-    <Box className="h-screen fixed top-0 left-0 w-20 md:w-64 bg-white border-r-2 border-solid">
+    <Box className="h-screen fixed top-0 left-0 w-20 md:w-64 bg-white shadow-lg shadow-indigo-500/40">
       {/* Logo */}
       <Box className="h-20">
         <Typography

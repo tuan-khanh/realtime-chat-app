@@ -6,7 +6,7 @@ import { Box, Button, Typography } from "@mui/material";
 
 function NoSelectedConversationPage() {
   return (
-    <Box className="bg-white flex justify-center items-center w-full flex-col">
+    <Box className="w-full h-full bg-white flex justify-center items-center flex-col">
       <FontAwesomeIcon icon={faFacebookMessenger} size="5x" className="mb-3" color="#6b32ec"/>
       <Typography variant="h6">
         Your messages

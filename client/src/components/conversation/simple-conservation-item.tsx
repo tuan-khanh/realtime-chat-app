@@ -15,19 +15,14 @@ function SimpleConversationItem({
 }>) {
   const { id, title, avatar, lastMessage, type } = conservationItem;
   return (
-    <Box
-      className={
-        "flex items-center hover:bg-slate-200 py-2 rounded-xl" +
-        (selected ? " bg-slate-300" : "")
-      }
-    >
+    <Box className={"flex items-center py-2 rounded-xl flex-1"}>
       <Avatar
         src={avatar ? avatar : defaultConversationAvatar}
-        className="w-max"
+        className="w-16 h-16 flex-none"
       ></Avatar>
-      <Container component="section">
-        <p>{title}</p>
-        <p>{lastMessage}</p>
+      <Container component="section" className="text-left flex-1">
+        <p className="text-slate-950 normal-case">{title}</p>
+        <p className="text-slate-500 normal-case">{lastMessage}</p>
       </Container>
     </Box>
   );

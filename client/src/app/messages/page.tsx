@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import {
   Box,
+  Button,
+  ButtonBase,
   IconButton,
   InputBase,
   Paper,
@@ -15,20 +17,21 @@ import {
   Typography,
 } from "@mui/material";
 import { useImmer } from "use-immer";
-
-const _conservations = new Array<ISimpleConversation>(20).fill({
-  id: Math.floor(Math.random() * 100),
-  title: "" + Math.floor(Math.random() * 100),
-  avatar: "https://api.dicebear.com/8.x/adventurer/svg?seed=Misty",
-  lastMessage: "Last message",
-  type: 0,
-});
+import { _conservations } from "./conversations";
+import React, { useState } from "react";
 
 function MessagesPage() {
-  const [conservations, setConservations] = useImmer(_conservations);
+  const [conservations, setConservations] = useImmer(
+    [] as ISimpleConversation[]
+  );
+  const [selectedConservationId, setSelectedConservationId] = useState(-1);
+  React.useEffect(() => {
+    setConservations(_conservations);
+  }, [setConservations]);
+
   return (
     <Stack className="w-96 bg-white h-screen px-4 overflow-hidden" spacing={2}>
-      <Box className="pt-10 flex items-end justify-between">
+      <Box className="pt-8 flex items-end justify-between">
         <Typography variant="h5" className="font-semibold">
           Conversations
         </Typography>
@@ -54,10 +57,20 @@ function MessagesPage() {
         </Typography>
         <Box className="h-full">
           {conservations.map((item, index) => (
-            <SimpleConversationItem
+            <Button
+              variant="text"
               key={`${item.id}${index}`}
-              conservationItem={item}
-            ></SimpleConversationItem>
+              onClick={() => setSelectedConservationId(item.id)}
+              className={
+                "w-full justify-start hover:bg-slate-300" +
+                (selectedConservationId === item.id ? " bg-slate-300" : "")
+              }
+            >
+              <SimpleConversationItem
+                conservationItem={item}
+                selected={selectedConservationId === item.id}
+              ></SimpleConversationItem>
+            </Button>
           ))}
         </Box>
       </Box>

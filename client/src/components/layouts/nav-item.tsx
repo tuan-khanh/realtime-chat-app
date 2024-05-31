@@ -4,13 +4,12 @@ import { Tooltip } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { INavItem } from "./INavItem";
-
-
+import { useEffect } from "react";
 
 function NavItem({ item }: { item: INavItem }) {
   const { path, icon, title } = item;
   const pathname = usePathname();
-
+  useEffect(() => console.log(pathname), [pathname]);
   return (
     <Link
       href={path}

@@ -16,16 +16,16 @@ import {
 } from "@mui/material";
 import { useImmer } from "use-immer";
 
+const _conservations = new Array<ISimpleConversation>(20).fill({
+  id: Math.floor(Math.random() * 100),
+  title: "" + Math.floor(Math.random() * 100),
+  avatar: "https://api.dicebear.com/8.x/adventurer/svg?seed=Misty",
+  lastMessage: "Last message",
+  type: 0,
+});
+
 function MessagesPage() {
-  const [conservations, setConservations] = useImmer(
-    new Array<ISimpleConversation>(20).fill({
-      id: Math.floor(Math.random() * 100),
-      title: "" + Math.floor(Math.random() * 100),
-      avatar: "https://api.dicebear.com/8.x/adventurer/svg?seed=Misty",
-      lastMessage: "Last message",
-      type: 0,
-    })
-  );
+  const [conservations, setConservations] = useImmer(_conservations);
   return (
     <Stack className="w-96 bg-white h-screen px-4 overflow-hidden" spacing={2}>
       <Box className="pt-10 flex items-end justify-between">
@@ -53,9 +53,9 @@ function MessagesPage() {
           Messages
         </Typography>
         <Box className="h-full">
-          {conservations.map((item) => (
+          {conservations.map((item, index) => (
             <SimpleConversationItem
-              key={item.id}
+              key={`${item.id}${index}`}
               conservationItem={item}
             ></SimpleConversationItem>
           ))}

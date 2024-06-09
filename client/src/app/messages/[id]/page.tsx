@@ -70,6 +70,7 @@ function ConversationPage() {
       <Box className="flex-1 px-2 overflow-y-scroll relative">
         {messages.map((item, index) => (
           <Box
+            key={index}
             className={
               "my-1 flex items-end " +
               (item.from.id !== currentUser.id
